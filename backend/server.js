@@ -41,3 +41,21 @@ app.get("/add-course", async (req, res) => {
 const courseRoutes = require("./routes/courseRoutes");
 app.use("/api/courses", courseRoutes);
 
+const authRoutes = require("./routes/authRoutes");
+app.use("/api/auth", authRoutes);
+
+
+const bcrypt = require("bcryptjs");
+const Student = require("./models/student");
+
+app.get("/create-student", async (req, res) => {
+  const hashedPassword = await bcrypt.hash("123456", 10);
+
+  const student = new Student({
+    email: "test@gmail.com",
+    password: hashedPassword
+  });
+
+  await student.save();
+  res.send("Test student created");
+});
