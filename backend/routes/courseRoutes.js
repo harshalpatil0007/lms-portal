@@ -11,3 +11,5 @@ router.get("/", getCourses);
 router.get("/:id", getCourseById);
 
 module.exports = router;
+
+

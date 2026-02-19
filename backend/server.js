@@ -59,3 +59,7 @@ app.get("/create-student", async (req, res) => {
   await student.save();
   res.send("Test student created");
 });
+
+const dashboardRoutes = require("./routes/dashboardRoutes");
+app.use("/api/dashboard", dashboardRoutes);
+
